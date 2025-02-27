@@ -81,5 +81,3 @@ This repository is designed as an informational resource for professionals looki
 - Your Name (@yourgithub)
 - Other Contributors
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
