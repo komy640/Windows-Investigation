@@ -1,7 +1,6 @@
 # Windows Investigation Repository
 
 ![Windows Investigation](![image](https://github.com/user-attachments/assets/89efdce1-a042-4ad7-95c5-48110f64e5e2)
-)
 
 ## Summary
 
