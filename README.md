@@ -1,6 +1,6 @@
 # Windows Investigation Repository
 
-![Windows Investigation](https://via.placeholder.com/800x400)
+![Windows Investigation](assets/windows-investigation.png)
 
 ## Summary
 
