@@ -46,8 +46,6 @@ To efficiently analyze Windows logs, security professionals leverage various too
 Account login and management events are crucial for detecting unauthorized access. This section covers:
 - Windows accounts
 - Account login tracking
-- Login validation events
-- Monitoring privilege escalation attempts
 - Investigating account management activities
 
 
