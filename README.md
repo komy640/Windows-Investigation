@@ -150,18 +150,6 @@ Microsoft provides event logs that help in detecting suspicious access, addition
 
 Most of these event names refer to an object, except for **event ID 4657**, which explicitly refers to registry modifications. The other event IDs record general access to objects, including registry keys.
 
-#### Analyzing Event ID 4656: "A Handle to an Object Was Requested"
-
-Event ID **4656** consists of four key sections:
-1. **Subject Section** – Information about the user who performed the action.
-2. **Object Section** – Details about the accessed object:
-   - `Object Server`: Always "Security"
-   - `Object Type`: Could be a file, key, or SAM (for registry run key persistence, focus on "Key")
-   - `Object Name`: The accessed registry key path
-3. **Process Information Section** – The process that performed the action.
-4. **Access Request Information Section** – Permissions (not always useful for investigations).
-
-
 
 
 
