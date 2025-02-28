@@ -28,21 +28,7 @@ Windows event logs are categorized into several key log types:
 ![WhatsApp Image 2025-02-23 at 10 02 46_b54663db](https://github.com/user-attachments/assets/8bdadde5-4654-4610-b6b9-44e9918cda03)
 
 
-### Key Event Log Sources and IDs
-Understanding critical Event IDs can help identify potential security incidents. Some notable examples include:
-- **4624** – Successful login
-- **4625** – Failed login attempt
-- **4688** – Process creation
-- **4720** – User account creation
-- **7045** – Service installation
-- **1102** – Security log cleared
 
-### Configuring and Collecting Event Logs
-To effectively monitor Windows event logs, organizations should:
-- Enable necessary audit policies via Group Policy or Local Security Policy.
-- Use **Windows Event Viewer** for real-time log analysis.
-- Deploy **Windows Event Forwarding (WEF)** to centralize log collection.
-- Integrate logs with **SIEM solutions** like Splunk, QRadar, or ELK Stack for advanced threat detection.
 
 ## Tracking Accounts Login and Management
 
