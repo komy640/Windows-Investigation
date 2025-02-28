@@ -39,7 +39,6 @@ To efficiently analyze Windows logs, security professionals leverage various too
 
 
 
-
 ## Tracking Accounts Login and Management
 
 ### Overview
@@ -51,11 +50,7 @@ Account login and management events are crucial for detecting unauthorized acces
 
 Windows accounts:
 ![WhatsApp Image 2025-02-25 at 08 02 59_a05a2460](https://github.com/user-attachments/assets/32007c6b-5b0e-4679-a22f-454060f8c1f5)
-
-
-
-
-
+Account login tracking:
 ![WhatsApp Image 2025-02-25 at 09 53 08_a4d49f4e](https://github.com/user-attachments/assets/6eaf40ad-e974-4788-9434-f9f546942eaa)
 
 
