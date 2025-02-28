@@ -25,6 +25,7 @@ Windows event logs serve as a crucial component for system monitoring, security 
 
 ### Structure of Windows Event Logs
 Windows event logs are categorized into several key log types:
+
 ![WhatsApp Image 2025-02-23 at 10 02 46_b54663db](https://github.com/user-attachments/assets/8bdadde5-4654-4610-b6b9-44e9918cda03)
 
 
@@ -48,6 +49,7 @@ Account login and management events are crucial for detecting unauthorized acces
 - Login validation events
 - Monitoring privilege escalation attempts
 - Investigating account management activities
+
 
 Windows accounts:
 ![WhatsApp Image 2025-02-25 at 08 02 59_a05a2460](https://github.com/user-attachments/assets/32007c6b-5b0e-4679-a22f-454060f8c1f5)
