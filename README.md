@@ -384,6 +384,18 @@ In this section, we will deep dive into the following lateral movement technique
 
 We will also discuss how to investigate these techniques by analyzing Windows event logs recorded on both source and target machines.
 
+### Remote Desktop Connection
+
+Attackers can use the built-in Windows Remote Desktop connection tool to fully access and control remote systems in a network for lateral movement. RDP traffic is often considered legitimate and permitted by security devices, making it an attractive technique for attackers.
+
+To investigate RDP lateral movement, analysts can utilize Windows event logs recorded on both the source and target machines:
+- **Source machine logs:** Event ID 4688 (execution of `mstsc.exe`)
+- **Target machine logs:**
+  - Event ID 4688 (`rdpclip.exe`, `tstheme.exe` execution)
+  - Event ID 4624 (successful RDP authentication, login type 10)
+  - Event ID 4778 (reconnected RDP session)
+  - Event ID 4779 (disconnected RDP session)
+
 
 ---
 
