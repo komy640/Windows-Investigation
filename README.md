@@ -118,10 +118,55 @@ PowerShell is frequently used in cyber attacks. This section covers:
 This section will explain some persistence techniques and how to investigate them using Windows event logs. For each technique, we will describe how it works and analyze the relevant Windows event logs that can help in investigations.
 
 ### 1. Registry Run Keys
-Attackers add malware execution paths to Windows registry keys to maintain persistence.
-- **Event Logs to Monitor:**
-  - Event ID **4657** (Registry modifications)
-  - Event ID **4663** (Registry object access)
+The Windows Registry is a hierarchical database that stores configuration settings, options, and information about the operating system, hardware devices, software applications, and user preferences on Microsoft Windows operating systems. It serves as a central repository for critical system and application settings.
+
+The Registry consists of five hives, with the most important ones being:
+- **HKEY_CURRENT_USER (HKCU):** Stores configuration settings for the currently logged-in user.
+- **HKEY_LOCAL_MACHINE (HKLM):** Stores configuration settings for the entire computer system, applicable to all users.
+
+Each registry hive includes several registry keys, such as the **registry run keys**. Registry run keys enable a program to execute when a user logs on to a system. Attackers may achieve persistence by modifying or adding new values under these registry run keys, referencing a malware path to be executed upon user login. This can be done using the Windows built-in **Registry Editor GUI tool** or a **command-line tool** such as the Windows built-in `reg.exe` tool.
+
+The following registry run keys exist by default in Windows OS:
+- `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`
+- `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce`
+- `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run`
+- `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce`
+
+#### Example of a Malicious Registry Entry
+
+A new registry value **Malware** is created under one of the registry run keys, referencing the `C:\Windows\Temp\Malware.exe` executable path to execute upon user login.
+
+#### Investigating Registry Run Key Modifications
+
+Microsoft provides event logs that help in detecting suspicious access, additions, or modifications to registry keys, including registry run keys. The following event IDs are useful for investigation:
+
+| Event ID | Event Name |
+|----------|------------------------------------------------|
+| 4656     | A handle to an object was requested          |
+| 4657     | A registry value was modified                |
+| 4658     | The handle to an object was closed          |
+| 4660     | An object was deleted                        |
+| 4663     | An attempt was made to access an object     |
+
+Most of these event names refer to an object, except for **event ID 4657**, which explicitly refers to registry modifications. The other event IDs record general access to objects, including registry keys.
+
+#### Analyzing Event ID 4656: "A Handle to an Object Was Requested"
+
+Event ID **4656** consists of four key sections:
+1. **Subject Section** – Information about the user who performed the action.
+2. **Object Section** – Details about the accessed object:
+   - `Object Server`: Always "Security"
+   - `Object Type`: Could be a file, key, or SAM (for registry run key persistence, focus on "Key")
+   - `Object Name`: The accessed registry key path
+3. **Process Information Section** – The process that performed the action.
+4. **Access Request Information Section** – Permissions (not always useful for investigations).
+
+#### Detecting Suspicious Registry Modifications
+
+Abnormal access by processes like **PowerShell.exe** or **CMD.exe** to registry run keys can be a sign of persistence. In one example, event logs recorded PowerShell modifying the `\REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` key under the context of user `pgustavo`. While event ID **4656** does not directly provide details on newly added values, it helps identify suspicious registry access patterns.
+
+To detect new or modified registry values, use **event ID 4657** ("A registry value was modified"). However, note that **registry modification auditing is not enabled by default**. To generate event ID 4657, the **Set Value auditing** must be configured in the registry key’s **System Access Control List (SACL)**.
+
 
 ### 2. Windows Scheduled Tasks
 Scheduled tasks allow attackers to execute payloads at specific times or during system events.
