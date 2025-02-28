@@ -68,20 +68,24 @@ The following table lists critical event IDs related to user account activities:
 
 the most important code to focus on is the (event id 4720) becouse the attacker maybe create a new account as a presistence technique
 
-### Key Security Events of account and group management activities:
-- **4720** – User account creation
-- **4728** – A member was added to a security-enabled global group
-- **4729** – A member was removed from a security-enabled global group
-- **4732** – A member was added to a security-enabled local group
-- **4733** – A member was removed from a security-enabled local group
-- **4756** – A member was added to a security-enabled universal group
-- **4757** – A member was removed from a security-enabled universal group
-- **4727** – A security-enabled global group was created
-- **4730** – A security-enabled global group was deleted
-- **4731** – A security-enabled local group was created
-- **4734** – A security-enabled local group was deleted
-- **4754** – A security-enabled universal group was created
-- **4758** – A security-enabled universal group was deleted
+### Group Membership and Account Management Event IDs
+
+| Event ID | Description |
+|----------|--------------------------------------------|
+| 4720     | User account creation |
+| 4728     | A member was added to a security-enabled global group |
+| 4729     | A member was removed from a security-enabled global group |
+| 4732     | A member was added to a security-enabled local group |
+| 4733     | A member was removed from a security-enabled local group |
+| 4756     | A member was added to a security-enabled universal group |
+| 4757     | A member was removed from a security-enabled universal group |
+| 4727     | A security-enabled global group was created |
+| 4730     | A security-enabled global group was deleted |
+| 4731     | A security-enabled local group was created |
+| 4734     | A security-enabled local group was deleted |
+| 4754     | A security-enabled universal group was created |
+| 4758     | A security-enabled universal group was deleted |
+
 
 
 
