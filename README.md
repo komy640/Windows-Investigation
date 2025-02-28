@@ -99,19 +99,10 @@ the most important code to focus on is the (event id 4720) becouse the attacker 
 
 ## Investigating Suspicious Process Execution Using Windows Event Logs
 
-### Overview
-Processes executed on a system can reveal malicious activities. This section covers:
-- Detecting abnormal process executions
-- Event IDs related to process creation and termination
-- Investigating malware execution patterns
 
 ## Investigating PowerShell Event Logs
 
-### Overview
-PowerShell is frequently used in cyber attacks. This section covers:
-- Logging and analyzing PowerShell commands
-- Detecting obfuscated and malicious scripts
-- Event IDs related to PowerShell activities
+
 
 ## Investigating Persistence Using Windows Event Logs
 
