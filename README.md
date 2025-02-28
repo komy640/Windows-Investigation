@@ -1,4 +1,4 @@
-# Windows Investigation Repository
+# Windows Investigation 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6cc2e947-e9bf-4a86-b92e-cc0d9940a5fb" width="90%">
@@ -48,8 +48,14 @@ Account login and management events are crucial for detecting unauthorized acces
 - Investigating account management activities
 
 
-Windows accounts:
+### Windows accounts:
 ![WhatsApp Image 2025-02-25 at 08 02 59_a05a2460](https://github.com/user-attachments/assets/32007c6b-5b0e-4679-a22f-454060f8c1f5)
+
+### Account login tracking
+![WhatsApp Image 2025-02-25 at 09 53 08_5af79ee1](https://github.com/user-attachments/assets/463bb4fb-d545-43b5-9a67-15b3d2e90f46)
+
+
+
 ### Account Management Events
 The following table lists critical event IDs related to user account activities:
 
