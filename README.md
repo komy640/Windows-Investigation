@@ -1,78 +1,62 @@
-# Windows Investigation 
-<img src="https://github.com/user-attachments/assets/6cc2e947-e9bf-4a86-b92e-cc0d9940a5fb" width="1000" height="500">
+# Windows Investigation Repository
 
-## Summary
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6cc2e947-e9bf-4a86-b92e-cc0d9940a5fb" width="90%">
+</p>
 
-This repository is designed as an informational resource for professionals looking to understand Windows forensic investigation techniques. It provides details on key tactics, tools, and procedures (TTPs) for log analysis, persistence detection, and attack mitigation.
+## Investigating Windows Threats by Using Event Logs
+
+In the rapidly evolving landscape of cybersecurity, Windows systems are frequently targeted by increasingly sophisticated threats, posing a challenge for SOC analysts in their detection and response efforts. However, Windows event logs offer a critical source of information that can be leveraged to identify security threats and conduct thorough investigations. This repository provides a comprehensive overview of the various types of Windows event logs, delving into the techniques employed by threat actors to compromise these systems, and equipping you with the necessary knowledge to investigate these threats using event logs effectively.
 
 ## Table of Contents
 
-- [Event Logs](#Event-Logs)
-- [Event Log Analysis](#event-log-analysis)
-- [Process and Memory Analysis](#process-and-memory-analysis)
-- [Network Traffic Analysis](#network-traffic-analysis)
-- [Persistence Mechanisms](#persistence-mechanisms)
-- [Defense and Detection](#defense-and-detection)
+- [Chapter 3: Introduction to Windows Event Logs](#chapter-3-introduction-to-windows-event-logs)
+- [Chapter 4: Tracking Accounts Login and Management](#chapter-4-tracking-accounts-login-and-management)
+- [Chapter 5: Investigating Suspicious Process Execution Using Windows Event Logs](#chapter-5-investigating-suspicious-process-execution-using-windows-event-logs)
+- [Chapter 6: Investigating PowerShell Event Logs](#chapter-6-investigating-powershell-event-logs)
+- [Chapter 7: Investigating Persistence and Lateral Movement Using Windows Event Logs](#chapter-7-investigating-persistence-and-lateral-movement-using-windows-event-logs)
 
 ---
 
-## Event Logs
+## Chapter 3: Introduction to Windows Event Logs
 
-### Windows Event Logs:
-![WhatsApp Image 2025-02-23 at 10 02 46_08864a13](https://github.com/user-attachments/assets/193092bf-ff35-483b-beea-44ac285203a2)
+### Overview
+Windows event logs are a valuable resource for security monitoring and forensic investigations. This chapter covers:
+- Understanding Windows event logs structure
+- Key event IDs and log sources
+- Configuring and collecting event logs efficiently
 
-- `whoami /all` - Get user privileges
-- `net users /domain` - Enumerate users
+## Chapter 4: Tracking Accounts Login and Management
 
-## Event Log Analysis
+### Overview
+Account login and management events are crucial for detecting unauthorized access. This chapter covers:
+- Event IDs for login success and failures
+- Monitoring privilege escalation attempts
+- Investigating account management activities
 
-### Key Windows Event IDs:
-- **4624** - Successful Logon
-- **4625** - Failed Logon
-- **4688** - Process Creation
-- **4720** - User Created
-- **4728** - User Added to Privileged Group
+## Chapter 5: Investigating Suspicious Process Execution Using Windows Event Logs
 
-### Tools:
-- Windows Event Viewer (`eventvwr.msc`)
-- PowerShell: `Get-WinEvent -LogName Security | select -First 10`
+### Overview
+Processes executed on a system can reveal malicious activities. This chapter covers:
+- Detecting abnormal process executions
+- Event IDs related to process creation and termination
+- Investigating malware execution patterns
 
-## Process and Memory Analysis
+## Chapter 6: Investigating PowerShell Event Logs
 
-### Commands:
-- `tasklist /v` - View running processes
-- `wmic process get description,executablepath`
-- `procdump` - Capture memory dump
+### Overview
+PowerShell is frequently used in cyber attacks. This chapter covers:
+- Logging and analyzing PowerShell commands
+- Detecting obfuscated and malicious scripts
+- Event IDs related to PowerShell activities
 
-### Tools:
-- Sysinternals Suite
-- Volatility Framework
+## Chapter 7: Investigating Persistence and Lateral Movement Using Windows Event Logs
 
-## Network Traffic Analysis
-
-### Commands:
-- `netstat -ano` - View active connections
-- `ipconfig /all` - Network configuration
-
-### Tools:
-- Wireshark
-- TCPDump
-- Microsoft Message Analyzer
-
-## Persistence Mechanisms
-
-### Registry Persistence:
-- `reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run`
-
-### Scheduled Tasks:
-- `schtasks /query /fo LIST /v`
-
-## Defense and Detection
-
-- Enable Windows Defender ATP
-- Configure Sysmon for logging
-- Use YARA rules for malware detection
-- SIEM Integration (Splunk, ELK, QRadar)
+### Overview
+Threat actors use persistence techniques and lateral movement for prolonged access. This chapter covers:
+- Identifying registry-based persistence
+- Detecting scheduled tasks and services used for persistence
+- Tracking lateral movement within a network
 
 ---
 
@@ -80,3 +64,5 @@ This repository is designed as an informational resource for professionals looki
 - Your Name (@yourgithub)
 - Other Contributors
 
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
