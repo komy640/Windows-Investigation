@@ -455,6 +455,47 @@ While PsExec has several legitimate uses for system administrators, it is also w
 By understanding PsExec usage and how attackers utilize it for lateral movement, analysts can better detect and investigate suspicious activities. In the next section, we will discuss the PowerShell remoting lateral movement technique and how to investigate its presence using recorded Windows event logs on both source and target machines.
 
 
+## PowerShell Remoting Lateral Movement
+
+### Understanding PowerShell Remoting
+
+Attackers are heavily dependent on PowerShell to achieve their objectives, including lateral movement. PowerShell is installed by default on all Windows systems, is not flagged as malicious by antivirus software, and provides remote access capabilities over an encrypted channel. Additionally, Windows administrators commonly use PowerShell for daily operations, allowing malicious activity to blend in with legitimate administration tasks.
+
+PowerShell remoting uses the **Windows Remote Management (WinRM)** protocol, which allows users to execute commands on remote systems over an encrypted channel. Attackers can execute commands remotely using the following:
+
+```powershell
+Invoke-Command -ComputerName VICTIM -ScriptBlock {Start-Process c:\malwarefolder\malware.exe} -Credential $credentials
+```
+
+```powershell
+Enter-PSSession -ComputerName VICTIM -Credential $credentials
+```
+
+SOC analysts and incident responders should be aware of the relevant Windows event logs recorded on both source and target machines to detect and investigate suspicious PowerShell remoting activities.
+
+### Investigating PowerShell Remoting Event Logs
+
+#### Source Machine Event Logs
+
+Several event logs recorded on the source machine can help investigate PowerShell remoting activities:
+- **Event ID 4688:** Logs the execution of the `powershell.exe` process, its command line, and its parent process.
+- **Event ID 4104:** Logs executed PowerShell command lines and scripts.
+- **Event ID 800:** Captures executed PowerShell commands.
+
+#### Target Machine Event Logs
+
+Like all lateral movement techniques, the most valuable event log artifacts of PowerShell remoting are recorded on the target machine:
+- **Event ID 4624:** Logs successful authentication to the target system with **logon type 3**. This event provides details such as the login account name, source workstation name, and IP address.
+- **Event ID 4688:** Logs the execution of the `wsmprovhost.exe` process, which is responsible for handling PowerShell remoting sessions.
+
+The `wsmprovhost.exe` process runs on the target system to receive commands from the source machine’s PowerShell session. To monitor these actions effectively, track event ID 4688 for any commands executed or processes spawned from `wsmprovhost.exe` on the target system.
+
+For example, **event ID 4688** may show `wsmprovhost.exe` spawning `powershell.exe` with an encoded command. Since PowerShell logs all executed commands, further investigation using event IDs **800 and 4104** can reveal the full decoded script.
+
+By understanding how attackers use PowerShell remoting for lateral movement and monitoring these event logs, analysts can effectively detect and investigate suspicious activity.
+
+
+
 
 
 ---
