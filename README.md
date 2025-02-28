@@ -457,7 +457,7 @@ By understanding PsExec usage and how attackers utilize it for lateral movement,
 
 ## PowerShell Remoting Lateral Movement
 
-### Understanding PowerShell Remoting
+
 
 Attackers are heavily dependent on PowerShell to achieve their objectives, including lateral movement. PowerShell is installed by default on all Windows systems, is not flagged as malicious by antivirus software, and provides remote access capabilities over an encrypted channel. Additionally, Windows administrators commonly use PowerShell for daily operations, allowing malicious activity to blend in with legitimate administration tasks.
 
