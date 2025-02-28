@@ -50,7 +50,6 @@ Account login and management events are crucial for detecting unauthorized acces
 
 Windows accounts:
 ![WhatsApp Image 2025-02-25 at 08 02 59_a05a2460](https://github.com/user-attachments/assets/32007c6b-5b0e-4679-a22f-454060f8c1f5)
-Account login tracking:
 ### Account Management Events
 The following table lists critical event IDs related to user account activities:
 
@@ -65,6 +64,8 @@ The following table lists critical event IDs related to user account activities:
 | 4738     | A user account was changed |
 | 4740     | A user account was locked out |
 | 4767     | A user account was unlocked |
+
+
 Investigating account and group management activities:
 the most important code to focus on is the (event id 4720) becouse the attacker maybe create a new account as a presistence technique
 ### Key Security Events
