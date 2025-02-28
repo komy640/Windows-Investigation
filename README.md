@@ -303,6 +303,29 @@ Tracking service-related events is crucial to identifying unauthorized or malici
 
 
 ### 3. Windows Services
+A Windows service is a process that runs in the background without user interaction and can start even before a user logs in. Attackers may achieve persistence by creating a new service or modifying an existing one to execute malicious code.
+
+#### Example: Creating a Malicious Service
+
+```sh
+sc.exe create TestService binpath= c:\windows\temp\NewServ.exe start= auto
+```
+
+This command creates a service named **TestService** that executes `c:\windows\temp\NewServ.exe` automatically on startup.
+
+#### Investigating Service Creation
+
+Microsoft logs service creation events with **event ID 7045** (System logs) and **event ID 4697** (Security logs). Key fields include:
+- **Service Name** – The newly created service name.
+- **Service File Name** – The binary path executed.
+- **Service Start Type**:
+  - `0`: Boot device services
+  - `1`: Driver started by I/O subsystem
+  - `2`: **Auto-start (commonly used by attackers)**
+  - `3`: Manual start
+  - `4`: Disabled
+- **Service Account** – The account context under which the service runs.
+  
 Malicious services are installed to execute malware with system privileges.
 - **Event Logs to Monitor:**
   - Event ID **7045** (New service installation)
