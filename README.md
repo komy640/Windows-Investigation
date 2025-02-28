@@ -396,7 +396,17 @@ To investigate RDP lateral movement, analysts can utilize Windows event logs rec
   - Event ID 4778 (reconnected RDP session)
   - Event ID 4779 (disconnected RDP session)
 
+### Windows Admin Shares Lateral Movement
 
+Windows admin shares, such as `C$` and `ADMIN$`, allow remote access for administrative tasks. Attackers leverage these shares to move laterally across the network, executing commands or transferring files remotely.
+
+To investigate Windows admin share lateral movement:
+- **Event ID 5140** - Network share object accessed
+- **Event ID 5145** - Detailed share permissions
+- **Event ID 4624** - Logon success (Type 3 for network logon)
+- **Monitor suspicious access from non-admin users**
+
+Tools such as `psexec.exe`, `wmic`, and `smbexec.py` are commonly used in admin share-based lateral movement.
 ---
 
 ## Contributors
