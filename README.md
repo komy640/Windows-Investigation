@@ -67,7 +67,6 @@ The following table lists critical event IDs related to user account activities:
 
 
 the most important code to focus on is the (event id 4720) becouse the attacker maybe create a new account as a presistence technique
-![image](https://github.com/user-attachments/assets/70864c19-e1c2-431a-8ad5-7515ec73b602)
 
 ### Key Security Events of account and group management activities:
 - **4720** – User account creation
