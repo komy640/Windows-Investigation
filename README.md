@@ -54,7 +54,20 @@ Account login tracking:
 ![WhatsApp Image 2025-02-25 at 09 53 08_a4d49f4e](https://github.com/user-attachments/assets/6eaf40ad-e974-4788-9434-f9f546942eaa)
 Investigating account and group management activities:
 the most important code to focus on is the (event id 4720) becouse the attacker maybe create a new account as a presistence technique
-<img src="https://github.com/user-attachments/assets/1ea4d896-6dde-4760-be14-72fbfcc04173" width="800">
+### Key Security Events
+- **4720** – User account creation
+- **4728** – A member was added to a security-enabled global group
+- **4729** – A member was removed from a security-enabled global group
+- **4732** – A member was added to a security-enabled local group
+- **4733** – A member was removed from a security-enabled local group
+- **4756** – A member was added to a security-enabled universal group
+- **4757** – A member was removed from a security-enabled universal group
+- **4727** – A security-enabled global group was created
+- **4730** – A security-enabled global group was deleted
+- **4731** – A security-enabled local group was created
+- **4734** – A security-enabled local group was deleted
+- **4754** – A security-enabled universal group was created
+- **4758** – A security-enabled universal group was deleted
 
 
 
