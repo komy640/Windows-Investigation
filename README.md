@@ -54,7 +54,8 @@ Account login tracking:
 ![WhatsApp Image 2025-02-25 at 09 53 08_a4d49f4e](https://github.com/user-attachments/assets/6eaf40ad-e974-4788-9434-f9f546942eaa)
 Investigating account and group management activities:
 the most important code to focus on is the (event id 4720) becouse the attacker maybe create a new account as a presistence technique
-![image](https://github.com/user-attachments/assets/1ea4d896-6dde-4760-be14-72fbfcc04173)
+<img src="https://github.com/user-attachments/assets/1ea4d896-6dde-4760-be14-72fbfcc04173" width="800">
+
 
 
 
