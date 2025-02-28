@@ -28,6 +28,15 @@ Windows event logs are categorized into several key log types:
 ![WhatsApp Image 2025-02-23 at 10 02 46_b54663db](https://github.com/user-attachments/assets/8bdadde5-4654-4610-b6b9-44e9918cda03)
 
 
+### The Important Tools to Investigate in Windows Logs
+To efficiently analyze Windows logs, security professionals leverage various tools, including:
+- **Event Viewer** – A built-in tool for viewing and filtering Windows event logs.
+- **PsLogList** – A command-line utility for listing event logs remotely.
+- **Event Log Explorer** – A third-party tool for advanced log analysis.
+- **EvtxECmd** – A powerful tool for parsing and analyzing Windows event log files.
+- **SIEM (Security Information and Event Management)** – Solutions like Splunk, QRadar, and ELK for centralized log analysis and threat detection.
+
+
 
 
 ## Tracking Accounts Login and Management
