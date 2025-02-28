@@ -1,9 +1,9 @@
-# Windows Investigation Repository
+# Windows Investigation 
 <img src="https://github.com/user-attachments/assets/6cc2e947-e9bf-4a86-b92e-cc0d9940a5fb" width="1000" height="500">
 
 ## Summary
 
-This repository is designed as an informational resource for professionals looking to understand Windows forensic investigation techniques. It provides details on key tactics, tools, and procedures (TTPs) for log analysis, memory forensics, persistence detection, and attack mitigation.
+This repository is designed as an informational resource for professionals looking to understand Windows forensic investigation techniques. It provides details on key tactics, tools, and procedures (TTPs) for log analysis, persistence detection, and attack mitigation.
 
 ## Table of Contents
 
