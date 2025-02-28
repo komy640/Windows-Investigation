@@ -152,14 +152,48 @@ Most of these event names refer to an object, except for **event ID 4657**, whic
 
 
 
-
-
 ### 2. Windows Scheduled Tasks
-Scheduled tasks allow attackers to execute payloads at specific times or during system events.
-- **Event Logs to Monitor:**
-  - Event ID **4698** (Scheduled task created)
-  - Event ID **4699** (Scheduled task deleted)
-  - Event ID **4700** (Scheduled task enabled)
+Windows Scheduled Tasks are predefined recurring actions that execute automatically when specific conditions are met. Attackers may achieve persistence by creating a scheduled task to execute malicious code repeatedly.
+
+A scheduled task can be created via the GUI tool or command-line tools such as `schtasks.exe`:
+
+```sh
+schtasks /create /tn mysc /tr C:\Users\Public\test.exe /sc ONLOGON /ru System
+```
+
+The command above was executed by the APT3 group to create a scheduled task named `mysc` that executes `C:\Users\Public\test.exe` every time a user logs in under the **System** account.
+
+#### Investigating Scheduled Task Persistence
+
+Microsoft allows tracking scheduled task creation via **event ID 4698** ("A scheduled task was created") in the **Security** event log.
+
+Key investigation details from event ID **4698**:
+- **Subject Section** – Identifies the user who created the task.
+- **Task Information Section** – Provides details such as:
+  - **Task Name**: The assigned name of the scheduled task.
+  - **Task Content**: Contains XML-formatted task details, including execution time and the command to run.
+
+Example of a suspicious scheduled task:
+- The scheduled task `MordorSchtask` executes PowerShell every day at `2020-09-21T09:00:00`.
+- The command executed is:
+  ```sh
+  powershell.exe -NonI -W hidden -c IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))
+  ```
+  - This indicates **fileless attack behavior**, executing an encoded command stored in the registry.
+- The task runs under the compromised account `THESHIRE\pgustavo`.
+
+#### Detecting Anomalous Scheduled Tasks
+
+To identify malicious scheduled tasks, look for:
+- **Scheduled tasks created outside normal working hours.**
+- **Tasks executing suspicious processes** (e.g., binaries from user profiles or temp paths).
+- **Execution of Living-Off-The-Land Binaries (LOLBins)**, such as:
+  - PowerShell (`powershell.exe`)
+  - Command Prompt (`cmd.exe`)
+  - Rundll32 (`rundll32.exe`)
+- **Compromised accounts used to create or execute scheduled tasks.**
+
+Tracking scheduled task creation and execution through event logs is crucial for identifying and mitigating persistence techniques used by attackers.
 
 ### 3. Windows Services
 Malicious services are installed to execute malware with system privileges.
