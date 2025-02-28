@@ -7,7 +7,7 @@ This repository is designed as an informational resource for professionals looki
 
 ## Table of Contents
 
-- [System Information Gathering](#system-information-gathering)
+- [Event Logs](#Event-Logs)
 - [Event Log Analysis](#event-log-analysis)
 - [Process and Memory Analysis](#process-and-memory-analysis)
 - [Network Traffic Analysis](#network-traffic-analysis)
@@ -16,11 +16,11 @@ This repository is designed as an informational resource for professionals looki
 
 ---
 
-## System Information Gathering
+## Event Logs
 
-### Commands and Tools:
-- `systeminfo` - Gather system details
-- `wmic os get caption, version, architecture`
+### Windows Event Logs:
+![WhatsApp Image 2025-02-23 at 10 02 46_08864a13](https://github.com/user-attachments/assets/193092bf-ff35-483b-beea-44ac285203a2)
+
 - `whoami /all` - Get user privileges
 - `net users /domain` - Enumerate users
 
