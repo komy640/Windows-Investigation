@@ -10,50 +10,50 @@ In the rapidly evolving landscape of cybersecurity, Windows systems are frequent
 
 ## Table of Contents
 
-- [Introduction to Windows Event Logs](#chapter-3-introduction-to-windows-event-logs)
-- [Tracking Accounts Login and Management](#chapter-4-tracking-accounts-login-and-management)
-- [Investigating Suspicious Process Execution Using Windows Event Logs](#chapter-5-investigating-suspicious-process-execution-using-windows-event-logs)
-- [Investigating PowerShell Event Logs](#chapter-6-investigating-powershell-event-logs)
-- [Investigating Persistence and Lateral Movement Using Windows Event Logs](#chapter-7-investigating-persistence-and-lateral-movement-using-windows-event-logs)
+- [Introduction to Windows Event Logs](#introduction-to-windows-event-logs)
+- [Tracking Accounts Login and Management](#tracking-accounts-login-and-management)
+- [Investigating Suspicious Process Execution Using Windows Event Logs](#investigating-suspicious-process-execution-using-windows-event-logs)
+- [Investigating PowerShell Event Logs](#investigating-powershell-event-logs)
+- [Investigating Persistence and Lateral Movement Using Windows Event Logs](#investigating-persistence-and-lateral-movement-using-windows-event-logs)
 
 ---
 
-## Chapter 3: Introduction to Windows Event Logs
+## Introduction to Windows Event Logs
 
 ### Overview
-Windows event logs are a valuable resource for security monitoring and forensic investigations. This chapter covers:
+Windows event logs are a valuable resource for security monitoring and forensic investigations. This section covers:
 - Understanding Windows event logs structure
 - Key event IDs and log sources
 - Configuring and collecting event logs efficiently
 
-## Chapter 4: Tracking Accounts Login and Management
+## Tracking Accounts Login and Management
 
 ### Overview
-Account login and management events are crucial for detecting unauthorized access. This chapter covers:
+Account login and management events are crucial for detecting unauthorized access. This section covers:
 - Event IDs for login success and failures
 - Monitoring privilege escalation attempts
 - Investigating account management activities
 
-## Chapter 5: Investigating Suspicious Process Execution Using Windows Event Logs
+## Investigating Suspicious Process Execution Using Windows Event Logs
 
 ### Overview
-Processes executed on a system can reveal malicious activities. This chapter covers:
+Processes executed on a system can reveal malicious activities. This section covers:
 - Detecting abnormal process executions
 - Event IDs related to process creation and termination
 - Investigating malware execution patterns
 
-## Chapter 6: Investigating PowerShell Event Logs
+## Investigating PowerShell Event Logs
 
 ### Overview
-PowerShell is frequently used in cyber attacks. This chapter covers:
+PowerShell is frequently used in cyber attacks. This section covers:
 - Logging and analyzing PowerShell commands
 - Detecting obfuscated and malicious scripts
 - Event IDs related to PowerShell activities
 
-## Chapter 7: Investigating Persistence and Lateral Movement Using Windows Event Logs
+## Investigating Persistence and Lateral Movement Using Windows Event Logs
 
 ### Overview
-Threat actors use persistence techniques and lateral movement for prolonged access. This chapter covers:
+Threat actors use persistence techniques and lateral movement for prolonged access. This section covers:
 - Identifying registry-based persistence
 - Detecting scheduled tasks and services used for persistence
 - Tracking lateral movement within a network
