@@ -489,7 +489,7 @@ By understanding how attackers use PowerShell remoting for lateral movement and 
 
 ---
 
-## Contact Information
+## Contact Info
 - **LinkedIn:** [https://www.linkedin.com/in/ahmed-elkomy-b17946256/]
 - **Email:** [alkomyy22@gmail.com]
 
