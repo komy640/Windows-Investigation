@@ -407,6 +407,56 @@ To investigate Windows admin share lateral movement:
 - **Monitor suspicious access from non-admin users**
 
 Tools such as `psexec.exe`, `wmic`, and `smbexec.py` are commonly used in admin share-based lateral movement.
+
+
+### PsExec – a Sysinternals Tool
+
+PsExec is a Sysinternals tool developed by Microsoft for remote code execution on other systems. Most attackers use the PsExec tool for both remote code execution and lateral movement. Attackers take advantage of this lightweight, capable tool, including the fact that many system admins use it in their day-to-day operations and that it is digitally signed by Microsoft and not categorized as malware by antiviruses, to stealthily execute their malicious executables remotely.
+
+Before investigating the event log artifacts of the PsExec tool usage, let us first discuss PsExec behavior when used for lateral movement and remote executions.
+
+#### PsExec Remote Code Execution Behavior
+
+The process of PsExec-based lateral movement involves a remote code execution from Host A to Host B. The attacker enters the following command in Host A:
+
+```sh
+psexec.exe \\HostB -accepteula -d -c C:\MalwareFolder\malware.exe
+```
+
+This command uses the PsExec tool to copy and execute the `Malware.exe` binary, located in Host A in the `C:\MalwareFolder` path, remotely on Host B. If the attacker has proper administrative privileges, executing this command on Host A will authenticate to Host B, and then, by default configuration, the following occurs:
+
+1. The `psexesvc.exe` (to handle the remote execution) and `Malware.exe` (the attacker's malicious executable) binaries will be copied to the `ADMIN$` share on Host B.
+2. A Windows service is created and starts executing the `psexesvc.exe` binary to execute the `Malware.exe` binary.
+3. The `psexesvc.exe` binary is a renamed copy of the `psexec.exe` binary to handle the remote execution from the source to the remote host.
+
+SOC analysts and incident responders should be aware of the Windows event logs recorded on both source and target machines to detect and investigate suspicious PsExec remote code executions.
+
+#### Investigating PsExec Event Logs
+
+##### Source Machine Event Logs
+
+While most of the PsExec event log artifacts are recorded on the target machine, useful events are also logged on the source system:
+- **Event ID 4688:** Records the execution of the `psexec.exe` process, including useful information such as the process name, process path, parent process, and the process command line (if CMD logging is enabled), which allows you to identify the target host of the remote execution.
+
+##### Target Machine Event Logs
+
+The majority of event log artifacts of PsExec remote execution are recorded on the target host. The first recorded event is:
+- **Event ID 4624:** Records the successful authentication to the target system to access shared resources (`ADMIN$`). This event provides valuable information such as the login account name, login type (3 or 2 if explicit credentials are provided), the source workstation name, and IP address.
+- **Event IDs 5140 and 5145:** Track accessed and mapped shared folders and files of the system, including potentially transferred files.
+- **Event ID 7045 and Event ID 4697:** Record the creation of a new service named `PSEXESVC` to execute the `%SystemRoot%\PSEXESVC.exe` binary. The service start type value is `3`, meaning the service will be executed on demand manually.
+- **Event ID 4688:** Records the execution of the `PSEXESVC.exe` binary, which is spawned by `Services.exe`, the expected parent process of all services’ binaries.
+- **Process ID Tracking:** By tracking spawned processes from the `PSEXESVC.exe` process, analysts may identify additional executed binaries. For example, a `Python.exe` process running from the `C:\Windows\Temp` path may have been spawned by `PSEXESVC.exe`, indicating a potential attack.
+
+While PsExec has several legitimate uses for system administrators, it is also widely used by attackers for lateral movement. To differentiate between legitimate and malicious use of PsExec, it is crucial to establish a baseline for your environment. 
+
+- In environments where system admins frequently use PsExec, observe any suspicious executions by non-admin users or outside normal working hours.
+- Focus on executed code and spawned processes by `PSEXESVC.exe` on a remote system.
+
+By understanding PsExec usage and how attackers utilize it for lateral movement, analysts can better detect and investigate suspicious activities. In the next section, we will discuss the PowerShell remoting lateral movement technique and how to investigate its presence using recorded Windows event logs on both source and target machines.
+
+
+
+
 ---
 
 ## Contributors
