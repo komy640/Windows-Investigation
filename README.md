@@ -10,11 +10,11 @@ In the rapidly evolving landscape of cybersecurity, Windows systems are frequent
 
 ## Table of Contents
 
-- [Chapter 3: Introduction to Windows Event Logs](#chapter-3-introduction-to-windows-event-logs)
-- [Chapter 4: Tracking Accounts Login and Management](#chapter-4-tracking-accounts-login-and-management)
-- [Chapter 5: Investigating Suspicious Process Execution Using Windows Event Logs](#chapter-5-investigating-suspicious-process-execution-using-windows-event-logs)
-- [Chapter 6: Investigating PowerShell Event Logs](#chapter-6-investigating-powershell-event-logs)
-- [Chapter 7: Investigating Persistence and Lateral Movement Using Windows Event Logs](#chapter-7-investigating-persistence-and-lateral-movement-using-windows-event-logs)
+- [Introduction to Windows Event Logs](#chapter-3-introduction-to-windows-event-logs)
+- [Tracking Accounts Login and Management](#chapter-4-tracking-accounts-login-and-management)
+- [Investigating Suspicious Process Execution Using Windows Event Logs](#chapter-5-investigating-suspicious-process-execution-using-windows-event-logs)
+- [Investigating PowerShell Event Logs](#chapter-6-investigating-powershell-event-logs)
+- [Investigating Persistence and Lateral Movement Using Windows Event Logs](#chapter-7-investigating-persistence-and-lateral-movement-using-windows-event-logs)
 
 ---
 
