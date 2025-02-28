@@ -332,12 +332,37 @@ Malicious services are installed to execute malware with system privileges.
   - Event ID **7034** (Service crashed unexpectedly)
 
 ### 4. WMI Event Subscription
-Windows Management Instrumentation (WMI) is used by attackers to trigger malicious code execution.
-- **Event Logs to Monitor:**
-  - Event ID **5861** (WMI filter created)
-  - Event ID **5860** (WMI consumer registered)
+An attacker may keep persistence on an infected system by configuring the Windows Management Instrumentation (WMI) event subscription to execute malicious content, either through a script or the command line, when specific conditions are met.
 
-By tracking these event logs, security analysts can detect and investigate persistence mechanisms used by adversaries, helping mitigate threats effectively.
+To keep persistence on the victim's machine by using WMI event subscription, an attacker needs to conduct the following three steps:
+1. **Create an Event Filter:** Defines a specific trigger condition (e.g., every one minute).
+2. **Create an Event Consumer:** Defines the script or command that should be executed once the condition in the event filter is met.
+3. **Create a Binding:** Ties the event filter and event consumer together.
+
+Microsoft provides **event ID 5861** in the `Microsoft-Windows-WMI-Activity/Operational` log file, which records every WMI event consumer creation activity, allowing investigation of suspicious WMI consumer creation behavior.
+
+#### Investigating Suspicious WMI Consumer Creation
+
+Event ID **5861** provides crucial information for threat investigators and hunters to detect and investigate suspicious WMI event consumer creation activities. This event shows that a new WMI event consumer named **Updater** was created, bound to an event filter (also named **Updater**), and configured as a **CommandLineEventConsumer** executing a suspiciously encoded PowerShell command.
+
+The types of WMI event consumers that can be used maliciously are:
+- **CommandLineEventConsumer:** Executes commands.
+- **ActiveScriptEventConsumer:** Executes scripts.
+
+To investigate suspicious consumer creation:
+- Identify whether the consumer type is **CommandLineEventConsumer** or **ActiveScriptEventConsumer**.
+- Investigate rare WMI event filter and consumer names.
+- Determine whether the consumer executes suspicious actions, such as running a binary from an unusual path or leveraging a **living-off-the-land binary (LOLBIN)**.
+
+### Summary
+
+By leveraging Windows Event Logs, security analysts can detect persistence mechanisms, including:
+- **Registry modifications (`4656, 4657`)**
+- **Scheduled tasks (`4698`)**
+- **Service installations (`4697, 7045`)**
+- **WMI event subscriptions (`5861`)**
+
+In the next section, we will discuss some lateral movement techniques and how to investigate them by analyzing the Windows event logs of both source and target machines.
 
 
 ## Investigating Lateral Movement Using Windows Event Logs
