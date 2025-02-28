@@ -367,11 +367,22 @@ In the next section, we will discuss some lateral movement techniques and how to
 
 ## Investigating Lateral Movement Using Windows Event Logs
 
-### Overview
-Threat actors use persistence techniques and lateral movement for prolonged access. This section covers:
-- Identifying registry-based persistence
-- Detecting scheduled tasks and services used for persistence
-- Tracking lateral movement within a network
+Lateral movement refers to the techniques that an attacker conducts after gaining initial access to a system and discovering the victim's network, to pivoting from the compromised machine to another machine in the same network to search for sensitive data and high-value systems. 
+
+To move from one machine to another, the attacker must use one of several lateral movement techniques, such as:
+- Remote Desktop application
+- PowerShell remoting
+- The PsExec tool
+- Remote admin share
+- Creating a remote service or scheduled task
+
+In this section, we will deep dive into the following lateral movement techniques:
+- **Remote Desktop application**
+- **Windows admin shares**
+- **The PsExec Sysinternals tool**
+- **PowerShell remoting**
+
+We will also discuss how to investigate these techniques by analyzing Windows event logs recorded on both source and target machines.
 
 
 ---
