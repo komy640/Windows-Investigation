@@ -46,6 +46,8 @@ Account login and management events are crucial for detecting unauthorized acces
 - Event IDs for login success and failures
 - Monitoring privilege escalation attempts
 - Investigating account management activities
+![WhatsApp Image 2025-02-25 at 09 53 08_a4d49f4e](https://github.com/user-attachments/assets/6eaf40ad-e974-4788-9434-f9f546942eaa)
+
 
 ## Investigating Suspicious Process Execution Using Windows Event Logs
 
