@@ -14,7 +14,8 @@ In the rapidly evolving landscape of cybersecurity, Windows systems are frequent
 - [Tracking Accounts Login and Management](#tracking-accounts-login-and-management)
 - [Investigating Suspicious Process Execution Using Windows Event Logs](#investigating-suspicious-process-execution-using-windows-event-logs)
 - [Investigating PowerShell Event Logs](#investigating-powershell-event-logs)
-- [Investigating Persistence and Lateral Movement Using Windows Event Logs](#investigating-persistence-and-lateral-movement-using-windows-event-logs)
+- [Investigating Persistence Using Windows Event Logs](#investigating-persistence-using-windows-event-logs)
+- [Investigating Lateral Movement Using Windows Event Logs](#investigating-lateral-movement-using-windows-event-logs)
 
 ---
 
@@ -112,13 +113,22 @@ PowerShell is frequently used in cyber attacks. This section covers:
 - Detecting obfuscated and malicious scripts
 - Event IDs related to PowerShell activities
 
-## Investigating Persistence and Lateral Movement Using Windows Event Logs
+## Investigating Persistence Using Windows Event Logs
 
 ### Overview
 Threat actors use persistence techniques and lateral movement for prolonged access. This section covers:
 - Identifying registry-based persistence
 - Detecting scheduled tasks and services used for persistence
 - Tracking lateral movement within a network
+
+## Investigating Lateral Movement Using Windows Event Logs
+
+### Overview
+Threat actors use persistence techniques and lateral movement for prolonged access. This section covers:
+- Identifying registry-based persistence
+- Detecting scheduled tasks and services used for persistence
+- Tracking lateral movement within a network
+
 
 ---
 
