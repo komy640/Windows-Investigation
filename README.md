@@ -115,11 +115,35 @@ PowerShell is frequently used in cyber attacks. This section covers:
 
 ## Investigating Persistence Using Windows Event Logs
 
-### Overview
-Threat actors use persistence techniques and lateral movement for prolonged access. This section covers:
-- Identifying registry-based persistence
-- Detecting scheduled tasks and services used for persistence
-- Tracking lateral movement within a network
+This section will explain some persistence techniques and how to investigate them using Windows event logs. For each technique, we will describe how it works and analyze the relevant Windows event logs that can help in investigations.
+
+### 1. Registry Run Keys
+Attackers add malware execution paths to Windows registry keys to maintain persistence.
+- **Event Logs to Monitor:**
+  - Event ID **4657** (Registry modifications)
+  - Event ID **4663** (Registry object access)
+
+### 2. Windows Scheduled Tasks
+Scheduled tasks allow attackers to execute payloads at specific times or during system events.
+- **Event Logs to Monitor:**
+  - Event ID **4698** (Scheduled task created)
+  - Event ID **4699** (Scheduled task deleted)
+  - Event ID **4700** (Scheduled task enabled)
+
+### 3. Windows Services
+Malicious services are installed to execute malware with system privileges.
+- **Event Logs to Monitor:**
+  - Event ID **7045** (New service installation)
+  - Event ID **7034** (Service crashed unexpectedly)
+
+### 4. WMI Event Subscription
+Windows Management Instrumentation (WMI) is used by attackers to trigger malicious code execution.
+- **Event Logs to Monitor:**
+  - Event ID **5861** (WMI filter created)
+  - Event ID **5860** (WMI consumer registered)
+
+By tracking these event logs, security analysts can detect and investigate persistence mechanisms used by adversaries, helping mitigate threats effectively.
+
 
 ## Investigating Lateral Movement Using Windows Event Logs
 
