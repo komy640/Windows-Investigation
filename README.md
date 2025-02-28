@@ -161,11 +161,9 @@ Event ID **4656** consists of four key sections:
 3. **Process Information Section** – The process that performed the action.
 4. **Access Request Information Section** – Permissions (not always useful for investigations).
 
-#### Detecting Suspicious Registry Modifications
 
-Abnormal access by processes like **PowerShell.exe** or **CMD.exe** to registry run keys can be a sign of persistence. In one example, event logs recorded PowerShell modifying the `\REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` key under the context of user `pgustavo`. While event ID **4656** does not directly provide details on newly added values, it helps identify suspicious registry access patterns.
 
-To detect new or modified registry values, use **event ID 4657** ("A registry value was modified"). However, note that **registry modification auditing is not enabled by default**. To generate event ID 4657, the **Set Value auditing** must be configured in the registry key’s **System Access Control List (SACL)**.
+
 
 
 ### 2. Windows Scheduled Tasks
